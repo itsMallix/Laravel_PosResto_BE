@@ -24,7 +24,7 @@
             <div class="section-body">
                 <div class="row">
                     <div class="col-12">
-                        {{-- @include('layouts.alert') --}}
+                        @include('layouts.alert')
                     </div>
                 </div>
                 <h2 class="section-title">Users</h2>
@@ -85,13 +85,13 @@
                                                 <td>{{ $user->created_at }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('user.edit', $user->id) }}'
+                                                        <a href='{{ route('users.edit', $user->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
