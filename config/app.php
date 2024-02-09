@@ -159,6 +159,8 @@ return [
         /*
          * Package Service Providers...
          */
+        // Fortivy
+        App\Providers\FortifyServiceProvider::class,
 
         /*
          * Application Service Providers...
