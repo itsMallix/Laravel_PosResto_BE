@@ -9,8 +9,8 @@ class CategoryController extends Controller
 {
     //index
     public function index(){
-        $category = Category::paginate(10);
-        return view('pages.categories.index');
+        $categories = Category::paginate(10);
+        return view('pages.categories.index', compact('categories'));
     }
 
     //create
@@ -23,11 +23,13 @@ class CategoryController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required',
+            'description' => 'required',
             'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         $category = new Category();
         $category->name = $request->name;
+        $category->description = $request->description;
 
         //save image
         if ($request->hasFile('image')){
@@ -56,11 +58,11 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'name' => 'required',
-            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
         ]);
 
         $category = Category::findOrFail($id);
         $category->name = $request->name;
+        $category->description = $request->description;
 
         //save image
         if ($request->hasFile('image')){
@@ -75,6 +77,7 @@ class CategoryController extends Controller
 
     //destroy
     public function destroy($id){
+
         $category = Category::findOrFail($id);
         $category->delete();
 
